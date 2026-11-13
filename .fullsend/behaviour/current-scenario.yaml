@@ -1,0 +1,22 @@
+ops:
+    - description: Check out fix branch
+      op: checkout_branch
+      args: agent/1-fix
+    - description: Emit fix JSON
+      op: write_fixture
+      args: output/agent-result.json, fixtures/fix/summary.json
+      content: |
+        {
+          "pr_number": 1,
+          "trigger_source": "human",
+          "actions": [
+            {
+              "type": "fix",
+              "finding": "Behaviour smoke finding",
+              "description": "Recorded the scripted marker commit on the pull request branch."
+            }
+          ],
+          "summary": "Behaviour smoke: fix pushed the scripted marker commit.",
+          "tests_passed": true,
+          "files_changed": []
+        }
